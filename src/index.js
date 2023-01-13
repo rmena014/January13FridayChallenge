@@ -1,5 +1,4 @@
 "use strict";
-// import * as mysql from "mysql2";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -37,69 +36,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-// const connect = mysql.createConnection({
-//   host: "127.0.0.1",
-//   user: "devuser",
-//   password: "Richjenn014",
-//   database: "classicmodels",
-// });
-// async function connectToDB() {
-//   try {
-//     connect.connect();
-//     console.log("Connected to the database.");
-//   } catch (error) {
-//     console.error(`Error connecting to the database: ${error.message}`);
-//   }
-// }
-// connectToDB();
-// connect.query("SELECT 1", (error, results, fields) => {
-//   if (error) {
-//     console.error(`Error testing connection: ${error.message}`);
-//   } else {
-//     console.log("Connection test successful!");
-//   }
-// });
-// // CREATE OPERATION
-// connect.query(
-//   "INSERT INTO customers (customerNumber, customerName, contactLastName, contactFirstName, phone, addressLine1, city, country) VALUES (497, 'Armada Workwear', 'Mena', 'Richard', '123-456-7890', '123 Goat St.', 'New York', 'USA')",
-//   (error, results) => {
-//     if (error) {
-//       console.error(`Error inserting record: ${error.message}`);
-//     } else {
-//       console.log("Record created successfully!");
-//     }
-//   }
-// );
-// //READ OPERATION
-// connect.query("Select * FROM customers", (error, results) => {
-//   if (error) {
-//     console.error(`Error reading record: ${error.message}`);
-//   } else {
-//     console.log("Record read successfully!");
-//   }
-// });
-// //UPDATE OPERATION
-// connect.query(
-//   "UPDATE customers SET customerName = 'New Armada Workwear' WHERE customerNumber = 497",
-//   (error, results) => {
-//     if (error) {
-//       console.error(`Error updating record: ${error.message}`);
-//     } else {
-//       console.log("Record updated successfully!");
-//     }
-//   }
-// );
-// // DELETE OPERATION
-// connect.query(
-//   "DELETE FROM customers WHERE customerNumber = 497",
-//   (error, results) => {
-//     if (error) {
-//       console.error(`Error deleting record: ${error.message}`);
-//     } else {
-//       console.log("Record deleted successfully!");
-//     }
-//   }
-// );
 var mysql = require("mysql2");
 var connect = mysql.createConnection({
     host: "127.0.0.1",
@@ -109,115 +45,60 @@ var connect = mysql.createConnection({
 });
 function connectToDB() {
     return __awaiter(this, void 0, void 0, function () {
-        var error_1;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, connect.connect()];
-                case 1:
-                    _a.sent();
-                    console.log("Connected to the database.");
-                    return [3 /*break*/, 3];
-                case 2:
-                    error_1 = _a.sent();
-                    console.error("Error connecting to the database: ".concat(error_1.message));
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+            try {
+                connect.connect();
+                console.log("Connected to the database.");
             }
+            catch (error) {
+                console.error("Error connecting to the database: ".concat(error.message));
+            }
+            return [2 /*return*/];
         });
     });
 }
 connectToDB();
-//CREATE OPERATION
-function createRecord() {
-    return __awaiter(this, void 0, void 0, function () {
-        var error_2;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, connect.query("INSERT INTO customers (customerNumber, customerName, contactLastName, contactFirstName, phone, addressLine1, city, country) VALUES (497, 'Armada Workwear', 'Mena', 'Richard', '123-456-7890', '123 Goat St.', 'New York', 'USA')")];
-                case 1:
-                    _a.sent();
-                    console.log("Record created successfully!");
-                    return [3 /*break*/, 3];
-                case 2:
-                    error_2 = _a.sent();
-                    console.error("Error inserting record: ".concat(error_2.message));
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
-            }
-        });
-    });
-}
-createRecord();
-// READ OPERATION
-function readRecord() {
-    return __awaiter(this, void 0, void 0, function () {
-        var results, error_3;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, connect.query("Select * FROM customers")];
-                case 1:
-                    results = _a.sent();
-                    console.log("Record read successfully!");
-                    return [3 /*break*/, 3];
-                case 2:
-                    error_3 = _a.sent();
-                    console.error("Error reading record: ".concat(error_3.message));
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
-            }
-        });
-    });
-}
-readRecord();
-// UPDATE OPERATION
-function updateRecord() {
-    return __awaiter(this, void 0, void 0, function () {
-        var error_4;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, connect.query("UPDATE customers SET customerName = 'New Armada Workwear' WHERE customerNumber = 497")];
-                case 1:
-                    _a.sent();
-                    console.log("Record updated successfully!");
-                    return [3 /*break*/, 3];
-                case 2:
-                    error_4 = _a.sent();
-                    console.error("Error updating record: ".concat(error_4.message));
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
-            }
-        });
-    });
-}
-updateRecord();
+connect.query("SELECT 1", function (error, results, fields) {
+    if (error) {
+        console.error("Error testing connection: ".concat(error.message));
+    }
+    else {
+        console.log("Connection test successful!");
+    }
+});
+// CREATE OPERATION
+connect.query("INSERT INTO customers (customerNumber, customerName, contactLastName, contactFirstName, phone, addressLine1, city, country) VALUES (497, 'Armada Workwear', 'Mena', 'Richard', '123-456-7890', '123 Goat St.', 'New York', 'USA')", function (error, results) {
+    if (error) {
+        console.error("Error inserting record: ".concat(error.message));
+    }
+    else {
+        console.log("Record created successfully!");
+    }
+});
+//READ OPERATION
+connect.query("Select * FROM customers", function (error, results) {
+    if (error) {
+        console.error("Error reading record: ".concat(error.message));
+    }
+    else {
+        console.log("Record read successfully!");
+    }
+});
+//UPDATE OPERATION
+connect.query("UPDATE customers SET customerName = 'New Armada Workwear' WHERE customerNumber = 497", function (error, results) {
+    if (error) {
+        console.error("Error updating record: ".concat(error.message));
+    }
+    else {
+        console.log("Record updated successfully!");
+    }
+});
 // DELETE OPERATION
-function deleteRecord() {
-    return __awaiter(this, void 0, void 0, function () {
-        var error_5;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, connect.query("DELETE FROM customers WHERE customerNumber = 497")];
-                case 1:
-                    _a.sent();
-                    console.log("Record deleted successfully!");
-                    return [3 /*break*/, 3];
-                case 2:
-                    error_5 = _a.sent();
-                    console.error("Error deleting record: ".concat(error_5.message));
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
-            }
-        });
-    });
-}
-deleteRecord();
+connect.query("DELETE FROM customers WHERE customerNumber = 497", function (error, results) {
+    if (error) {
+        console.error("Error deleting record: ".concat(error.message));
+    }
+    else {
+        console.log("Record deleted successfully!");
+    }
+});
